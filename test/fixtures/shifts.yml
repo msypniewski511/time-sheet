@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+RT000:
+  nazwa: RT000
+  grafik_id: 1
+
+RT001:
+  nazwa: RT001
+  grafik_id: 2

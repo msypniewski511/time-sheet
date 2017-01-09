@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+maciej:
+  email: msypniewski511@gmail.com
+  password: secret
+  shift_id: 1
+  status_id: 1
+  department_id: 2
+
+example:
+  email: example@exampl.com
+  password: secret
+  shift_id: 2
+  status_id: 2
+  department_id: 3

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+rt:
+  nazwa: styczenrt581
+  dane: dane
+
+rc:
+  nazwa: styczenrt582  
+  dane: dane
