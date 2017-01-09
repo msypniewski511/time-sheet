@@ -7,11 +7,11 @@ class EmployeeTest < ActiveSupport::TestCase
   
   test "should create the employee" do
     employee = Employee.new
-    employee.email = 'example@example.com'
+    employee.email = 'example1@example.com'
     employee.password = 'secret'
-    employee.shift_id = shifts(:RT000)
-    employee.status_id = statuses(:admin)
-    employee.department_id = departments(:ship)
+    employee.shift_id = shifts(:RT000).id
+    employee.status_id = statuses(:admin).id
+    employee.department_id = departments(:ship).id
     assert employee.save
   end
   

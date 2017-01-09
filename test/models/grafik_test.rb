@@ -11,7 +11,7 @@ class GrafikTest < ActiveSupport::TestCase
   end
   
   test "should create grafik" do
-    grafik = Grafik.new(:nazwa => 'Ship')
+    grafik = Grafik.new(:nazwa => 'Ship', :dane => 'dane')
     assert grafik.save
   end
   

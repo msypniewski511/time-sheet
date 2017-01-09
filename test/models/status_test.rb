@@ -11,7 +11,7 @@ class StatusTest < ActiveSupport::TestCase
   end
   
   test "should create grafik" do
-    status = Status.new(:nazwa => 'ADMIN')
+    status = Status.new(:nazwa => 'ADMIN', :uprawnienia => 1)
     assert status.save
   end
   
