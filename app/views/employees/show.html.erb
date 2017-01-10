@@ -12,12 +12,12 @@
 
 <p>
   <strong>Sgift:</strong>
-  <%= @employee.sgift_id %>
+  <%= @employee.shift.nazwa %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @employee.status_id %>
+  <%= @employee.status.nazwa %>
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
