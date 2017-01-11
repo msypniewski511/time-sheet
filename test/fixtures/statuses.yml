@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 admin:
+  id: 1
   nazwa: admin
   uprawnienia: 7
 
 user:
+  id: 2
   nazwa: user
   uprawnienia: 1

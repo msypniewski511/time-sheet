@@ -3,13 +3,13 @@
 maciej:
   email: msypniewski511@gmail.com
   password: secret
-  shift_id: shifts(:RT000).id
-  status_id: statuses(:admin).id
-  department_id: departments(:ship).id
+  shift_id: 1
+  status_id: 1
+  department_id: 1
 
 example:
   email: example@exampl.com
   password: secret
-  shift_id: 2
-  status_id: 2
-  department_id: 3
+  shift_id: 1
+  status_id: 1
+  department_id: 1

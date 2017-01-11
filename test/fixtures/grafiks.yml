@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 rt:
+  id: 1
   nazwa: styczenrt581
   dane: dane
 
 rc:
+  id: 2
   nazwa: styczenrt582  
   dane: dane

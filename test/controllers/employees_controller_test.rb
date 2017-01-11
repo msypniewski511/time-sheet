@@ -1,9 +1,12 @@
 require 'test_helper'
 
 class EmployeesControllerTest < ActionController::TestCase
-  fixtures :departments, :grafiks, :shifts, :statuses
+  fixtures :departments, :grafiks, :shifts, :statuses, :employees
   setup do
     @employee = employees(:maciej)
+    @shift = shifts(:RT000)
+    @status = statuses(:admin)
+    @department = departments(:ship)
     @update = {
       email: 'example2@gmail.com',
       password: 'haslo',
@@ -33,8 +36,8 @@ class EmployeesControllerTest < ActionController::TestCase
   end
 
   test "should show employee" do
-    #get :show, id: @employee
-    #assert_response :success
+    get :show, id: @employee
+    assert_response :success
   end
 
   test "should get edit" do

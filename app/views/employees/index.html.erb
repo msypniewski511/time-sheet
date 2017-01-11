@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Password</th>
-      <th>Shift</th>
+      <th>Zmiana</th>
+      <th>Dzial</th>
       <th>Status</th>
       <th colspan="3"></th>
     </tr>
@@ -17,9 +17,9 @@
     <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.email %></td>
-        <td><%= employee.password %></td>
-        <td><%= employee.shift_id %></td>
-        <td><%= employee.status_id %></td>
+        <td><%= employee.shift.nazwa %></td>
+        <td><%= employee.department.nazwa %></td>
+        <td><%= employee.status.nazwa %></td>
         <td><%= link_to 'Show', employee %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
         <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
