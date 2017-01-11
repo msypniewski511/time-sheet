@@ -42,5 +42,34 @@ class EmployeeTest < ActiveSupport::TestCase
     assert !employee.save
   end
   
+  def new_employee(email)
+    Employee.new(email: email,
+    password: 'haslo',
+    shift_id: 1,
+    status_id: 1,
+    department_id: 1)
+  end
+  
+  test "email should be in correct format" do
+    ok = %w{example@employee.com EXAMPLE@XXX.XX}
+    bad = %w{example.com exampl@example}
+    
+    ok.each do |email|
+      assert new_employee(email).valid?
+    end
+    
+    bad.each do |email|
+      assert new_employee(email).invalid?
+    end
+  end
+  
+  test "email should be unique" do
+    employee = Employee.new(email: employees(:maciej).email,
+    password: 'haslo',
+    shift_id: 1,
+    status_id: 1,
+    department_id: 1)
+    assert !employee.save
+  end
 end
 

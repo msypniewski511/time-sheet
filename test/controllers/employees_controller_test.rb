@@ -4,9 +4,6 @@ class EmployeesControllerTest < ActionController::TestCase
   fixtures :departments, :grafiks, :shifts, :statuses, :employees
   setup do
     @employee = employees(:maciej)
-    @shift = shifts(:RT000)
-    @status = statuses(:admin)
-    @department = departments(:ship)
     @update = {
       email: 'example2@gmail.com',
       password: 'haslo',
