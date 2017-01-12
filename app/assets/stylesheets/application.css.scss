@@ -15,3 +15,33 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* Styles dla list w panelu administracyjnym*/
+
+#admin_list table {
+        border-collapse: collapse;
+}
+
+#admin_list table tr td {
+        padding: 5px;
+        vertical-align: top;
+}
+
+#admin_list .list_image {
+  width:        60px;
+  height:       70px;
+}
+
+#admin_list .list_actions {
+  font-size:    x-small;
+  text-align:   right;
+  padding-left: 1em;
+}
+
+#admin_list .list_line_even {
+  background:   #e0f8f8;
+}
+
+#admin_list .list_line_odd {
+  background:   #f8b0f8;
+}

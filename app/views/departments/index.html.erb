@@ -1,0 +1,29 @@
+<div id="admin_list" >
+    <h1>Lista departamentów.</h1>
+    <table>
+        <tr>
+            <th>Nazwa Departamentu  </th>
+            <th allign="center">  Akcja:</th>
+        </tr>
+        <% @departments.each do |department| %>
+          <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
+              <!--<td>-->
+                  <!--<%# image_tag(department.image_url, :class => 'list_image' ) %>-->
+              <!--</td>-->
+              <td>
+                  <%= department.nazwa %>
+              </td>
+              <td class="list_actions" >
+                  <%= link_to 'Show' , department %> | 
+                  <%= link_to 'Edit' , edit_department_path(department) %> | 
+                  <%= link_to 'Destroy' , department,
+                  :confirm => 'Jesteś pewien?' ,
+                  :method => :delete %>
+              </td>
+          </tr>
+        <% end %>
+    </table>
+</div>
+<br />
+<%= link_to 'Nowy Departament' , new_department_path %> |
+<%= link_to "Porót do administarcji", administracja_path %>

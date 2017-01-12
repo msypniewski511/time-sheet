@@ -1,8 +1,12 @@
 <%= form_for(@employee) do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
-
+      <% errors_count = @employee.errors.count %>
+      <% if errors_count == 1 %>
+        <h2>1 błąd nie pozwala na przetworzenie formólarza:</h2>
+      <% else %>
+        <h2><%= errors_count %> błedy nie pozwalają na przetworzenie formólarza:</h2>
+      <% end %>
       <ul>
       <% @employee.errors.full_messages.each do |message| %>
         <li><%= message %></li>

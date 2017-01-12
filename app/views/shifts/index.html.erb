@@ -1,0 +1,29 @@
+<div id="admin_list" >
+    <h1>Lista zmian.</h1>
+    <table>
+        <tr>
+            <th>Nazwa Zmiany  </th>
+            <th allign="center">  Akcja:</th>
+        </tr>
+        <% @shifts.each do |shift| %>
+          <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
+              <!--<td>-->
+                  <!--<%# image_tag(department.image_url, :class => 'list_image' ) %>-->
+              <!--</td>-->
+              <td>
+                  <%= shift.nazwa %>
+              </td>
+              <td class="list_actions" >
+                  <%= link_to 'Show' , shift %> | 
+                  <%= link_to 'Edit' , edit_shift_path(shift) %> | 
+                  <%= link_to 'Destroy' , shift,
+                  :confirm => 'Jesteś pewien?' ,
+                  :method => :delete %>
+              </td>
+          </tr>
+        <% end %>
+    </table>
+</div>
+<br />
+<%= link_to 'Nowa Zmiana' , new_shift_path %> |
+<%= link_to "Porót do administarcji", administracja_path %>

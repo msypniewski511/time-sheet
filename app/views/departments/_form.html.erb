@@ -1,0 +1,26 @@
+<%= form_for(@department) do |f| %>
+  <% if @department.errors.any? %>
+    <div id="error_explanation">
+      <% errors_count = @department.errors.count %>
+      <% if errors_count == 1 %>
+        <h2>1 błąd nie pozwala na przetworzenie formólarza:</h2>
+      <% else %>
+        <h2><%= errors_count %> błedy nie pozwalają na przetworzenie formólarza:</h2>
+      <% end %>
+      <ul>
+      <% @department.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+      <%= f.label :nazwa, "Nazwa departamentu:" %><br />
+      <%= f.text_field :nazwa %><br />
+  </div>
+  <div class="action">
+      <%= f.submit %>
+  </div>
+
+<% end %>

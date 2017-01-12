@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div id="admin_list" >
 <h1>Listing Employees</h1>
 
 <table>
@@ -15,11 +15,12 @@
 
   <tbody>
     <% @employees.each do |employee| %>
-      <tr>
+    
+      <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
         <td><%= employee.email %></td>
-        <td><%= employee.shift.nazwa %></td>
-        <td><%= employee.department.nazwa %></td>
-        <td><%= employee.status.nazwa %></td>
+        <td><%= employee.shift.nazwa if employee.shift %></td>
+        <td><%= employee.department.nazwa if employee.department %></td>
+        <td><%= employee.status.nazwa if employee.status %></td>
         <td><%= link_to 'Show', employee %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
         <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,7 +28,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Employee', new_employee_path %>

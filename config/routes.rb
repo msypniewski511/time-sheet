@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/about', :as => 'about'
   get 'home/contact', :as => 'contact'
+  get 'home/administaracja', :as => 'administracja'
 
   resources :employees
+  resources :statuses
+  resources :departments
+  resources :shifts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

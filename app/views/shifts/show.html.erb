@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Zmiana:</strong>
+  <%= @shift.nazwa %>
+</p>
+
+<%= link_to 'Edytuj', edit_shift_path(@shift) %> |
+<%= link_to 'Powrót do listy zmian', shifts_path %> | 
+<%= link_to "Porót do administarcji", administracja_path %>
