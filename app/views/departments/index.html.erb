@@ -1,18 +1,25 @@
-<div id="admin_list" >
-    <h1>Lista departamentów.</h1>
-    <table>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel administracyjny aplikacji - Lista departamentów. <span class="badge"><%= Department.count %></span></div>
+  <div class="panel-body">
+  </div>
+
+  <!-- Table -->
+  <table class="table">
         <tr>
-            <th>Nazwa Departamentu  </th>
-            <th allign="center">  Akcja:</th>
+            <th>Nazwa Departamentu:</th>
+            <th>Liczba pracowników:</th>
+            <th>Akcja:</th>
         </tr>
         <% @departments.each do |department| %>
           <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
-              <!--<td>-->
-                  <!--<%# image_tag(department.image_url, :class => 'list_image' ) %>-->
-              <!--</td>-->
               <td>
                   <%= department.nazwa %>
               </td>
+              <td><%= department.employees.count %></td>
               <td class="list_actions" >
                   <%= link_to 'Show' , department %> | 
                   <%= link_to 'Edit' , edit_department_path(department) %> | 
@@ -23,7 +30,9 @@
           </tr>
         <% end %>
     </table>
+    <div class="panel-footer">
+  <%= link_to 'Nowy Departament' , new_department_path %> |
+<%= link_to "Porót do administarcji", administracja_path %>
+  </div>
 </div>
 <br />
-<%= link_to 'Nowy Departament' , new_department_path %> |
-<%= link_to "Porót do administarcji", administracja_path %>

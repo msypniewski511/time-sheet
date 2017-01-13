@@ -1,14 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">Status:</div> 
+  <div class="panel-body">
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
+    <p>
+      <strong>Nazwa:</strong>
+      <%= @status.nazwa %>
+    </p>
+    <p>
+      <strong>Uprawnienia:</strong>
+      <%= @status.uprawnienia %>
+      </p>
+  
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'Edytuj', edit_status_path(@status) %> | 
+    <%= link_to 'Powrót do listy', statuses_path %> | 
+    <%= link_to "Porót do administarcji", administracja_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Nazwa:</strong>
-  <%= @status.nazwa %>
-</p>
-
-<p>
-  <strong>Uprawnienia:</strong>
-  <%= @status.uprawnienia %>
-</p>
-
-<%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', statuses_path %>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Lista pracowników o statusie <%= @status.nazwa %></h3>
+  </div>
+  <div class="panel-body" id="list_product">
+    <table class="admin_list table">
+      <tr>
+        <th>Email: </th>
+        <th>Zmiana:</th>
+        <th>Dział:</th>
+      </tr>
+      <div id="product_list">
+    <% @status.employees.each do |employee| %>
+      <tr class="<%= cycle('list_line_odd' , 'list_line_even' ) %>">
+        <td><%= employee.email %></td>
+        <td><%= employee.shift.nazwa %></td>
+        <td><%= employee.department.nazwa %></td>
+      </tr>
+    <% end %>
+    </div>
+    </table>
+  </div>
+  <div class="panel-footer"><span class="label label-success">Pracownikó:  </span><span class="badge"><%= @status.employees.count %></span></div>
+</div>

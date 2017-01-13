@@ -1,7 +1,28 @@
-<ul>
-    <li><%= link_to "Strona główna.", root_path %></li>
-    <li><%= link_to "Pracownicy.", employees_path %></li>
-    <li><%= link_to "Statusy pracowników.", statuses_path %></li>
-    <li><%= link_to "Departamenty.", departments_path %></li>
-    <li><%= link_to "Zmiany.", shifts_path %></li>
-</ul>
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel administracyjny aplikacji</div>
+  <div class="panel-body">
+  </div>
+
+  <!-- Table -->
+  <table class="admin_list">
+    <tr>
+        <td><%= link_to "Pracownicy.", employees_path %></td>
+        <td><span class="badge"><%= Employee.count %></span> pracowników</td>
+    </tr>
+    <tr>
+        <td><%= link_to "Statusy pracowników.", statuses_path %></td>
+        <td><span class="badge"><%= Status.count %></span> statusy</td>
+    </tr>
+    <tr>
+        <td><%= link_to "Departamenty.", departments_path %></td>
+        <td><span class="badge"><%= Department.count %></span> departamenty</td>
+    </tr>
+    <tr>
+        <td><%= link_to "Zmiany.", shifts_path %></td>
+        <td><span class="badge"><%= Shift.count %></span> zmiany</td>
+    </tr>
+  </table>
+  <div class="panel-footer"><%= link_to "Strona główna.", root_path %></div>
+</div>

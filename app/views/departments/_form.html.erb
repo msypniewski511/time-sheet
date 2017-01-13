@@ -1,9 +1,17 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= yield(:title) %>
+  </div>
+  <div class="panel-body">
 <%= form_for(@department) do |f| %>
   <% if @department.errors.any? %>
     <div id="error_explanation">
       <% errors_count = @department.errors.count %>
       <% if errors_count == 1 %>
         <h2>1 błąd nie pozwala na przetworzenie formólarza:</h2>
+      <% elsif errors_count < 5 %>
+        <h2><%= errors_count %> błedy nie pozwalają na przetworzenie formólarza:</h2>
       <% else %>
         <h2><%= errors_count %> błedy nie pozwalają na przetworzenie formólarza:</h2>
       <% end %>
@@ -24,3 +32,7 @@
   </div>
 
 <% end %>
+</div>
+  <div class="panel-footer"><%= link_to "Powrót do listy", departments_path %> | 
+  <%= link_to "Panel administracyjny", administracja_path %></div>
+</div>

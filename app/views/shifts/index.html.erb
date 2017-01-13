@@ -1,18 +1,22 @@
-<div id="admin_list" >
-    <h1>Lista zmian.</h1>
-    <table>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel administracyjny aplikacji - Lista zmian <span class="badge"><%= Shift.count %></span></div>
+  <div class="panel-body"></div>
+  <!-- Table -->
+  <div>
+  <table class="table">
         <tr>
             <th>Nazwa Zmiany  </th>
+            <th>Liczba pracowników:</th>
             <th allign="center">  Akcja:</th>
         </tr>
         <% @shifts.each do |shift| %>
           <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
-              <!--<td>-->
-                  <!--<%# image_tag(department.image_url, :class => 'list_image' ) %>-->
-              <!--</td>-->
-              <td>
-                  <%= shift.nazwa %>
-              </td>
+              <td><%= shift.nazwa %></td>
+              <td><%= shift.employees.count %></td>
               <td class="list_actions" >
                   <%= link_to 'Show' , shift %> | 
                   <%= link_to 'Edit' , edit_shift_path(shift) %> | 
@@ -23,7 +27,6 @@
           </tr>
         <% end %>
     </table>
+    <div class="panel-footer"><%= link_to 'Nowa Zmiana' , new_shift_path %> |
+<%= link_to "Porót do administarcji", administracja_path %></div>
 </div>
-<br />
-<%= link_to 'Nowa Zmiana' , new_shift_path %> |
-<%= link_to "Porót do administarcji", administracja_path %>

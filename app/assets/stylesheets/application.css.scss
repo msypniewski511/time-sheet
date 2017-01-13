@@ -16,6 +16,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Global styles */
+
+#notice {
+        color: #000;
+        border: 2px solid green;
+        padding: 1em;
+        margin-bottom: 2em;
+        background-color: #f0f0f0;
+        font: bold smaller sans-serif;
+}
+
 /* Styles dla list w panelu administracyjnym*/
 
 #admin_list table {
@@ -32,16 +43,15 @@
   height:       70px;
 }
 
-#admin_list .list_actions {
+.list_actions {
   font-size:    x-small;
   text-align:   right;
   padding-left: 1em;
 }
 
-#admin_list .list_line_even {
+.list_line_even {
   background:   #e0f8f8;
 }
-
-#admin_list .list_line_odd {
-  background:   #f8b0f8;
+.list_line_odd {
+  background:   #99FFFF;
 }

@@ -1,15 +1,21 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
-<div id="admin_list" >
-<h1>Listing Employees</h1>
+<% end %>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel administracyjny aplikacji - Lista pracowników <span class="badge"><%= Employee.count %></span></div>
+  <div class="panel-body">
+  </div>
 
-<table>
+  <!-- Table -->
+  <table class="table">
   <thead>
     <tr>
       <th>Email</th>
       <th>Zmiana</th>
       <th>Dzial</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th colspan="3">Akcja:</th>
     </tr>
   </thead>
 
@@ -21,14 +27,15 @@
         <td><%= employee.shift.nazwa if employee.shift %></td>
         <td><%= employee.department.nazwa if employee.department %></td>
         <td><%= employee.status.nazwa if employee.status %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', employee %></td>
+        <td><%= link_to 'Edytuj', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Usuń', employee, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class="panel-footer">
+  <%= link_to 'Nowy Pracownik', new_employee_path %> |
+<%= link_to 'Powrót do administarcji', administracja_path %>
+  </div>
 </div>
-<br>
-
-<%= link_to 'New Employee', new_employee_path %>

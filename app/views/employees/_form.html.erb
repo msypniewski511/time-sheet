@@ -1,3 +1,9 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= yield(:title) %>
+  </div>
+  <div class="panel-body">
 <%= form_for(@employee) do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
@@ -20,22 +26,29 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label :hasło %><br>
     <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :shift %><br>
-    <%= f.number_field :shift_id %>
+    <%= f.label :zmiana %><br>
+    <% @tablica = Shift.all.map { |shift| [shift.nazwa, shift.id]} %>
+    <%= f.select :shift_id, options_for_select(@tablica, :id) %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status_id %>
+    <%= f.label :status, 'Status:' %><br>
+    <% @tablica = Status.all.map { |status| [status.nazwa, status.id]} %>
+    <%= f.select :status_id, options_for_select(@tablica, :id) %>
   </div>
   <div class="field">
-    <%= f.label :departament %>
-    <%= f.number_field :department_id %>
+    <%= f.label :departament, 'Departament:' %><br />
+    <% @tablica = Department.all.map { |department| [department.nazwa, department.id]} %>
+    <%= f.select :department_id, options_for_select(@tablica, :id) %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+  <div class="panel-footer"><%= link_to "Powrót do listy", employees_path %> | 
+  <%= link_to "Panel administracyjny", administracja_path %></div>
+</div>

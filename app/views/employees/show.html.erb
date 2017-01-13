@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @employee.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @employee.password %>
-</p>
-
-<p>
-  <strong>Zmiana:</strong>
-  <%= @employee.shift.nazwa %>
-</p>
-
-<p>
-  <strong>Dział:</strong>
-  <%= @employee.department.nazwa %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @employee.status.nazwa %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<div class="panel panel-primary">
+  <div class="panel-heading">Pracownik:</div> 
+  <div class="panel-body">
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
+    
+    <p>
+      <strong>Email:</strong>
+      <%= @employee.email %>
+    </p>
+    
+    <p>
+      <strong>Hasło:</strong>
+      <%= @employee.password %>
+    </p>
+    
+    <p>
+      <strong>Zmiana:</strong>
+      <%= @employee.shift.nazwa if @employee.shift %>
+    </p>
+    
+    <p>
+      <strong>Dział:</strong>
+      <%= @employee.department.nazwa if @employee.department %>
+    </p>
+    
+    <p>
+      <strong>Status:</strong>
+      <%= @employee.status.nazwa if @employee.status %>
+    </p>
+    
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'Edytuj', edit_employee_path(@employee) %> | 
+    <%= link_to 'Powrót do listy', employees_path %> | 
+    <%= link_to "Porót do administarcji", administracja_path %>
+  </div>
+</div>

@@ -1,4 +1,10 @@
-<%= form_for(@status) do |f| %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= yield(:title) %>
+  </div>
+  <div class="panel-body">
+  <%= form_for(@status) do |f| %>
   <% if @status.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@status.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -10,16 +16,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  
+  <div class="input-group">
     <%= f.label :nazwa %><br>
-    <%= f.text_field :nazwa %>
+    <%= f.text_field :nazwa, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :uprawnienia %><br>
-    <%= f.text_field :uprawnienia %>
+    <%= f.text_field :uprawnienia, class: "form-control" %>
   </div>
-  <div class="actions">
+  <div class="action">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %>  
+</div>
+  <div class="panel-footer"><%= link_to "Powrót do listy", statuses_path %> | 
+  <%= link_to "Panel administracyjny", administracja_path %></div>
+</div>

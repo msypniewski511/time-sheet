@@ -1,29 +1,40 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
-
-<h1>Lista Stastusów</h1>
-
-<table>
+<% end %>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel administracyjny aplikacji - Lista statusów <span class="badge"><%= Status.count %></span></div>
+  <div class="panel-body">
+    Liczba statusów to: <%= Status.count %>
+  </div>
+  <div>
+  <!-- Table -->
+  <table class="table">
   <thead>
     <tr>
       <th>Status</th>
       <th>Uprawnienia</th>
-      <th colspan="3"></th>
+      <th>Liczba członków</th>
+      <th colspan="3">Akcja:</th>
     </tr>
   </thead>
 
-  <tbody>
+<tbody>
     <% @statuses.each do |status| %>
-      <tr>
+      <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
         <td><%= status.nazwa %></td>
         <td><%= status.uprawnienia %></td>
+        <td><%= status.employees.count %></td>
         <td><%= link_to 'Show', status %></td>
         <td><%= link_to 'Edit', edit_status_path(status) %></td>
         <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Nowy Status', new_status_path %>
+  <div class="panel-footer">
+  <%= link_to 'Nowy Status', new_status_path %> |
+  <%= link_to "Panel administracyjny", administracja_path %>
+</div>
+</div>
