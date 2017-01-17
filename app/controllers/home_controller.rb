@@ -7,4 +7,8 @@ class HomeController < ApplicationController
   end
   def administaracja
   end
+  def kalendarz
+  end
+  def grafik
+  end
 end

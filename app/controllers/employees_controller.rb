@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:edit, :update, :destroy]
 
   # GET /employees
   # GET /employees.json
@@ -10,6 +10,17 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
+    begin
+      @employee = Employee.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Próba dostępu do nie istniejącego recordu #{params[:id]}"
+      redirect_to employees_path, notice: "Nieprawidłowy record."
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: :show }
+      end
+    end
   end
 
   # GET /employees/new

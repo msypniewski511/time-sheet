@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'home/about', :as => 'about'
   get 'home/contact', :as => 'contact'
   get 'home/administaracja', :as => 'administracja'
+  get 'home/kalendarz', :as => 'kalendarz'
+  get 'home/grafik', as: 'grafik'
 
   resources :employees
   resources :statuses
