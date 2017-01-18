@@ -1,0 +1,26 @@
+<h1>Kalendarz</h1>
+<h2><%= "Dla zmiany #{@shift.nazwa}" %></h2>
+<%= form_for(:kalendarz, :action => "create") do |f| %>
+    <table class="calendar">
+    <thead>
+        <tr>
+            <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td>Sob</td><td>Nie</td>
+        </tr>
+    </thead>
+      <% @string.split('<tr>').each do |kolumna| %>
+      <tr>
+      <% kolumna.split.each do |dzien| %>
+      <td>
+      <% tmp = dzien.split('|') %>
+      <%= "" %>
+      <%=f.select(:kalendarz[tmp[0]], [["#{tmp[0]} wolne", '0'], ["#{tmp[0]} dniówka", '1'], ["#{tmp[0]} nocka", '2'], ["#{tmp[0]} inny miesiąc", '3']], {}, {:class=>"form-control", :style=>"opacity: 1;"}) %>
+
+      </td>
+      <% end %>
+      </tr>
+      <% end %>
+      </table>
+      <%= f.hidden_field :kalendarz[100], :value => 11 %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<%= "#{@shift}" %>
+<% end %>

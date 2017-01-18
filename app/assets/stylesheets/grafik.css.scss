@@ -23,6 +23,7 @@
 }
 
 .calendar {
+	width: 450px;
 	background: #fff;
 	border-radius: 0 0 1em 1em;
 	-webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
@@ -53,6 +54,10 @@
 
 .current-day {
 	color: #e66b6b;
+	font: bold;
+	font-weight:  bold;
+	font-size:    larger;
+	/*--color: #e66b6b;--*/
 }
 
 .night-day {
@@ -90,4 +95,44 @@
 	margin: 8px;
 	height: 32px;
 	width: 8px;
+}
+.weekend-day {
+	color: red;
+}
+.next-month-side {
+	background: #336633;;
+	color: #fff;
+	padding: .5em 1em;
+	text-align: center;
+	
+	#weekend {
+		color: red;
+	}
+	#month-name {
+		font-size: 2em;
+	}
+	td {
+		padding: .2em;
+		text-align: center;
+	}
+}
+
+
+.prev-month-side {
+	background: blue;
+	color: #fff;
+	padding: .5em 1em;
+	text-align: center;
+	font-size: 1em;
+	
+	#weekend {
+		color: red;
+	}
+	#month-name {
+		font-size: 2em;
+	}
+	td {
+		padding: .2em;
+		text-align: center;
+	}
 }

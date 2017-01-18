@@ -48,6 +48,9 @@ class ShiftsController < ApplicationController
         end
     end
     
+    def grafik
+    end
+    
     private
     def set_ships
         @shift = Shift.find(params[:id])
