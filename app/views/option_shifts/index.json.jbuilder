@@ -1,0 +1,1 @@
+json.array! @option_shifts, partial: 'option_shifts/option_shift', as: :option_shift

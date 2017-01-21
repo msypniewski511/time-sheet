@@ -53,6 +53,15 @@
     <% end %>
   </div>
   <div class="col-md-3">
+    <h2>Opcje kolorów:</h2>
+    <table>
+      <% OptionShift.all.each do |opcja| %>
+        <tr style="color: <%= opcja.color %>">
+          <td><%= opcja.option %></td>
+          <td><%= opcja.description %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 <div class="panel-footer">...</div>

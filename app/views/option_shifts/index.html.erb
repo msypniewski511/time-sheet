@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista opcji dla zmian</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Opcja</th>
+      <th>Kololr</th>
+      <th>Opis</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @option_shifts.each do |option_shift| %>
+      <tr>
+        <td><%= option_shift.option %></td>
+        <td style="color: <%= option_shift.color %>"><%= option_shift.color %></td>
+        <td><%= option_shift.description %></td>
+        <td><%= link_to 'Show', option_shift %></td>
+        <td><%= link_to 'Edit', edit_option_shift_path(option_shift) %></td>
+        <td><%= link_to 'Destroy', option_shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr><br/>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nowa opcja', new_option_shift_path %>

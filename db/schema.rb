@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110075754) do
+ActiveRecord::Schema.define(version: 20170121073828) do
 
   create_table "departments", force: :cascade do |t|
     t.string   "nazwa"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20170110075754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "shift_id"
+  end
+
+  create_table "option_shifts", force: :cascade do |t|
+    t.string   "option"
+    t.string   "color"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "shifts", force: :cascade do |t|

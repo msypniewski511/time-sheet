@@ -1,0 +1,36 @@
+<%= form_for(@option_shift) do |f| %>
+  <% if @option_shift.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@option_shift.errors.count, "error") %> prohibited this option_shift from being saved:</h2>
+
+      <ul>
+      <% @option_shift.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% opcje = options_for_select(@opcje) %>
+  <div class="field">
+    <%= f.label :Opcja %><br>
+    <%= f.text_field :option, class: 'form-control'  %>
+  </div>
+  <div class="field">
+    <%= f.label :Kolor %><br>
+     <%= f.select(:color, opcje, {}, {:class=>"form-control", :style=>"opacity: 1;"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :Opis %><br>
+    <%= f.text_field :description, class: 'form-control'  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<table>
+  <% @opcje.each do |nazwa, value| %>
+    <tr>
+      <td><%= nazwa %></td><td style="background-color: <%= "#{value}" %>" width=100></td>
+    </tr>
+  <% end %>
+</table>

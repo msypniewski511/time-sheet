@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Opcja:</strong>
+  <%= @option_shift.option %>
+</p>
+
+<p>
+  <strong>Kolor:</strong>
+  <b style="color: <%= @option_shift.color %>">Taki kolor ma tekst</b>
+  <%= @option_shift.color %>
+</p>
+
+<p>
+  <strong>Opis:</strong>
+  <%= @option_shift.description %>
+</p>
+
+<%= link_to 'Edytuj', edit_option_shift_path(@option_shift) %> |
+<%= link_to 'Powrót', option_shifts_path %><br /><hr />

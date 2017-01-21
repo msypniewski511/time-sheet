@@ -1,0 +1,1 @@
+json.partial! "option_shifts/option_shift", option_shift: @option_shift
