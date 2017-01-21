@@ -19,7 +19,7 @@
 <div class="panel panel-danger">
   <div class="panel-heading">Grafik:</div>
   <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <% if @shift.grafiks.size > 0 %>
       <% @miesiac = Time.now.month %>
       <% @tablica_dni = @shift.grafiks.first.dane.split %>
@@ -30,7 +30,7 @@
       <%= link_to 'Utwórz grafik', new_shift_grafik_path(@shift) %>
     <% end %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <% if @shift.grafiks.size > 1 %>
       <% @miesiac = Time.now.months_since(1).month %>
       <% @tablica_dni = @shift.grafiks.second.dane.split %>
@@ -41,7 +41,7 @@
       <%= link_to 'Utwórz grafik', new_shift_grafik_path(@shift) %>
     <% end %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <% if @shift.grafiks.size > 2 %>
       <% @miesiac = Time.now.months_since(2).month %>
       <% @tablica_dni = @shift.grafiks.third.dane.split %>
@@ -51,6 +51,8 @@
     <% else %>
       <%= link_to 'Utwórz grafik', new_shift_grafik_path(@shift) %>
     <% end %>
+  </div>
+  <div class="col-md-3">
   </div>
 </div>
 <div class="panel-footer">...</div>

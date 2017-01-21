@@ -15,10 +15,9 @@
         </tr>
         <% @shifts.each do |shift| %>
           <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
-              <td><%= shift.nazwa %></td>
+              <td><%= link_to "#{shift.nazwa}", shift %></td>
               <td><%= shift.employees.count %></td>
-              <td class="list_actions" >
-                  <%= link_to 'Show' , shift %> | 
+              <td class="list_actions" > 
                   <%= link_to 'Edit' , edit_shift_path(shift) %> | 
                   <%= link_to 'Destroy' , shift,
                   :confirm => 'Jesteś pewien?' ,

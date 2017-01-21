@@ -1,5 +1,5 @@
 <% if notice %>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 <% end %>
 <div class="panel panel-primary">
   <!-- Default panel contents -->
@@ -23,11 +23,10 @@
     <% @employees.each do |employee| %>
     
       <tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
-        <td><%= employee.email %></td>
+        <td><%= link_to "#{employee.email}", employee %></td>
         <td><%= employee.shift.nazwa if employee.shift %></td>
         <td><%= employee.department.nazwa if employee.department %></td>
         <td><%= employee.status.nazwa if employee.status %></td>
-        <td><%= link_to 'Pokaż', employee %></td>
         <td><%= link_to 'Edytuj', edit_employee_path(employee) %></td>
         <td><%= link_to 'Usuń', employee, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
