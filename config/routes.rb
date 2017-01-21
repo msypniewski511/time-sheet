@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get 'home/administaracja', :as => 'administracja'
   get 'home/kalendarz', :as => 'kalendarz'
   get 'home/grafik', as: 'grafik'
+  get 'kalendarz/new', to: 'kalendarz#new'
+  post 'kalendarz/new', to: 'kalendarz#create'
+  get 'kalendarz/edit/:id', to: 'kalendarz#edit', as: 'kalendarz_edit'
+  post 'kalendarz/edit/:id', to: 'kalendarz#update'
 
   resources :employees
   resources :statuses

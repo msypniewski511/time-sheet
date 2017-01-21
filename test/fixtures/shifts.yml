@@ -9,3 +9,8 @@ RT001:
   id: 2
   nazwa: RT001
   grafik_id: 1
+  
+BLU:
+  id: 3
+  nazwa: BLU
+  grafik_id: 1

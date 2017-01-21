@@ -1,0 +1,8 @@
+<% provide(:title, 'Edytuj kalendarz') %>
+<% provide(:button_text, 'Zmień kalendarz') %>
+<% @grafik = Grafik.find(params[:id]) %>
+<div class="row">
+
+  <%= render 'form' %>
+
+</div>

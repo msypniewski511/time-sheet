@@ -43,7 +43,7 @@ class ShiftsController < ApplicationController
     def destroy
         @shift.destroy
         respond_to do |format|
-            format.html {redirect_to shift_url, notice: "Zmiana została usunięta"}
+            format.html {redirect_to shifts_url, notice: "Zmiana została usunięta"}
             format.json {head :no_content}
         end
     end

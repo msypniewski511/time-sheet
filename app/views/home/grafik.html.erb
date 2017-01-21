@@ -46,15 +46,15 @@
     <div class="col-xs-6 col-md-3">
       <% tab_month = tablica_miesiaca(Time.now.months_ago(1)) %>
       <% tab_month.shift %>
-    <table>
-          <thead  class="prev-month-side">
-            <tr><td colspan="6" id="month-name"><%= data_month(Time.now.months_ago(1).month) %><td></td></tr>
-            <tr>
-              <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
-            </tr>
-          </thead>
-    <% i = 0 %>
-    <% tab_month.each do |dzien| %>
+    <table class="month-side">
+      <thead  id="prev-month-side">
+        <tr><td colspan="6" id="month-name"><%= data_month(Time.now.months_ago(1).month) %><td></td></tr>
+        <tr>
+          <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
+        </tr>
+      </thead>
+      <% i = 0 %>
+      <% tab_month.each do |dzien| %>
       <% if i == 0 %>
         <tr>
       <% end %>
@@ -78,8 +78,8 @@
 <br />
 <% tab_month = (tablica_miesiaca(Time.now.months_since(1))) %>
 <% tab_month.shift %>
-<table>
-    <thead  class="next-month-side">
+<table class="month-side">
+    <thead  id="next-month-side">
       <tr><td colspan="6" id="month-name"><%= data_month(Time.now.months_since(1).month) %><td></td></tr>
       <tr>
         <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>

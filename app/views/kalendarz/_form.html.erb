@@ -1,0 +1,32 @@
+<% i = 0 %>
+<%= @grafik.id %>
+<h1>Kalendarz</h1>
+<h2><%= "Dla miesiąca #{data_month(@time.month)}"%></h2>
+<%= form_for(:kalendarz, :action => "create") do |f| %>
+
+ <table>
+    <thead>
+      <tr>
+        <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td>Sob</td><td>Nie</td>
+      </tr>
+    </thead>
+    <% @tablica_miesiaca.each do |dzien| %>
+      <% if i == 0 %>
+        <tr>
+      <% end %>
+      <td>
+        <% tmp = dzien.split('|') %>
+        <%= "" %>
+        <div class="field">
+       <%= f.select(:dane[tmp[0]], [["#{tmp[0]} wolne", '0'], ["#{tmp[0]} dniówka", '1'], ["#{tmp[0]} nocka", '2'], ["#{tmp[0]} inny miesiąc", '3']], {}, {:class=>"form-control", :style=>"opacity: 1;"}) %>
+       </div>
+      </td>
+      <% i += 1 %>
+      <% if i == 7 %>
+        </tr>
+        <% i = 0 %>
+      <% end %>
+      <% end %>
+      </table>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

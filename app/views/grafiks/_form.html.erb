@@ -1,0 +1,12 @@
+
+<h1>Grafik</h1>
+<h4><%= "Dla zmiany #{@shift.nazwa}"%></h4>
+<%= form_for([@shift, @shift.grafiks.new]) do |f| %>
+  <div class="field">
+    <%= f.label :nazwa %>
+    <%= f.text_field :nazwa %>
+  </div>
+  <div class="field">
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+<% end %>

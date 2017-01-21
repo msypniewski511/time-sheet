@@ -45,6 +45,6 @@ class StatusesControllerTest < ActionController::TestCase
       delete :destroy, id: @status
     end
 
-    assert_redirected_to status_path
+    assert_response :redirect
   end
 end

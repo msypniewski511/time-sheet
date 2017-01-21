@@ -1,0 +1,32 @@
+<% tab_month = @tablica_dni %>
+<table class="month-side">
+    <thead  class="next-month-side">
+      <tr><td colspan="6" id="month-name"><%= data_month(@miesiac) %><td></td></tr>
+      <tr>
+        <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
+      </tr>
+    </thead>
+    <% i = 0 %>
+    <% tab_month.each do |dzien| %>
+      <% if i == 0 %>
+        <tr>
+      <% end %>
+      <% tab_day = dzien.split('|') %>
+      <% if i >= 5 %>
+        <% if tab_day[1] == ("work-day" || "night-day") %>
+          <td class="weekend-day-work"><%= tab_day[0] %></td>
+        <% elsif tab_day[1] == "night-day" %>
+          <td class="weekend-night-work"><%= tab_day[0] %></td>
+        <% else %>
+          <td class="weekend-day"><%= tab_day[0] %></td>
+        <% end %>
+      <% else %>
+        <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
+      <% end %>
+      <% i += 1 %>
+      <% if i == 7 %>
+        </tr>
+        <% i = 0 %>
+      <% end %>
+    <% end %>
+</table>

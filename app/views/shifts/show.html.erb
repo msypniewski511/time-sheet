@@ -16,6 +16,46 @@
   </div>
 </div>
 
+<div class="panel panel-danger">
+  <div class="panel-heading">Grafik:</div>
+  <div class="row">
+  <div class="col-md-4">
+    <% if @shift.grafiks.size > 0 %>
+      <% @miesiac = Time.now.month %>
+      <% @tablica_dni = @shift.grafiks.first.dane.split %>
+      <%= render '/shared/grafik' %>
+      <hr /><%= link_to 'Edytuj kalendarz', kalendarz_edit_path(id: @shift.grafiks.first) %>
+    <% else %>
+      Brak danych w grafiku
+      <%= link_to 'Utwórz grafik', new_shift_grafik_path(@shift) %>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <% if @shift.grafiks.size > 1 %>
+      <% @miesiac = Time.now.months_since(1).month %>
+      <% @tablica_dni = @shift.grafiks.second.dane.split %>
+      <% @tablica_dni.shift %>
+      <%= render "/shared/grafik" %>
+      <hr /><%= link_to 'Edytuj kalendarz' , kalendarz_edit_path(id: @shift.grafiks.second)  %>
+    <% else %>
+      <%= link_to 'Utwórz grafik', new_shift_grafik_path(@shift) %>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <% if @shift.grafiks.size > 2 %>
+      <% @miesiac = Time.now.months_since(2).month %>
+      <% @tablica_dni = @shift.grafiks.third.dane.split %>
+      <% @tablica_dni.shift %>
+      <%= render "/shared/grafik" %>
+      <hr /><%= link_to 'Edytuj kalendarz' , kalendarz_edit_path(id: @shift.grafiks.third)  %>
+    <% else %>
+      <%= link_to 'Utwórz grafik', new_shift_grafik_path(@shift) %>
+    <% end %>
+  </div>
+</div>
+<div class="panel-footer">...</div>
+</div>
+
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Lista pracowników na zmianie <%= @shift.nazwa %></h3>

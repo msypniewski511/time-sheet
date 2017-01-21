@@ -2,10 +2,12 @@
 
 rt:
   id: 1
-  nazwa: styczenrt581
+  nazwa: styczen
   dane: dane
+  shift_id: 1
 
 rc:
   id: 2
   nazwa: styczenrt582  
   dane: dane
+  shift_id: 2

@@ -1,5 +1,5 @@
 class Grafik < ActiveRecord::Base
-    has_one :shift
+    belongs_to :shift
     validates_presence_of :nazwa, :message => "Musisz podać nazwę grafiku."
-    validates_presence_of :dane, :message => "Musisz podać dene."
+    #validates_presence_of :dane, :message => "Musisz podać dene."
 end

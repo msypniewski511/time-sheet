@@ -1,0 +1,10 @@
+<h1>Zawarosc params</h1>
+<% i = 0 %>
+<% params[:kalendarz].each do |dzien| %>
+  <%= i.to_s + ": " %>
+  <%= dzien %>
+  <% i += 1 %>
+  <br />
+<% end %>
+<hr />
+<%= @dane.inspect %>
