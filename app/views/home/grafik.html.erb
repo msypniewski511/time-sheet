@@ -1,108 +1,138 @@
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
     <div class="col-xs-12 col-md-3">
-      <%= image_tag("zima.png", class: 'img-thumbnail') %>
-    </div>
-    <div class="col-xs12 col-md-6">
+      <h2>Maciej Sypniewski</h2>
+      <%= image_tag("zima.png", class: 'img-thumbnail') %><br /><br />
+      <br />
+      <hr />
+      <br />
+      <!-- Wyświetla legende użytych kolorów na kalendrzu. -->
+      <div class="panel panel-primary">
+       <div class="panel-heading">Legenda:</div> 
+      <div class="panel-body">
+        <table>
+          <% OptionShift.all.each do |opcja| %>
+            <tr style="color: <%= opcja.color %>">
+              <td><%= opcja.option %></td>
+              <td><%= opcja.description %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      </div>
+      <!-- Główny kalendarz -->
+      </div>
+      <div class="col-xs12 col-md-6">
+        <hr />
         <div class="calendar-container">
-            <header>
-                <div class="day"><% t = Time.now %><%= t.day %></div>
-                <div class="month"><%= data_month(t.month) %></div>
-            </header>
-            <table class="calendar">
-                <thead>
-                    <tr>
-                        <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% string = %w{28 29|prev-month 30|prev-month 1 2 3|work-day 4|work-day <tr> 5 6 7 8 9 10|work-day 11|work-day <tr> 12 13 14 15 16 17|work-day 18|work-day <tr> 19 20 21 22 23 24|work-day 25|work-day <tr> 26 27 28 29 30 31 1|next-month} %>
-                    <% string = tablica_miesiaca(Time.now) %>
-                        <% i = 0 %>
-                        <% string.each do |dzien| %>
-                          <% if i == 0 %>
-                            <tr>
-                          <% end %>
-                          <% tab_day = dzien.split('|') %>
-                          <% if tab_day[0].to_i == Time.now.day %>
-                            <td class="current-day"><%= tab_day[0] %></td>
-                          <% elsif i >= 5 %>
-                            <td class="weekend-day"><%= tab_day[0] %></td>
-                          <% else %>
-                            <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
-                          <% end %>
-                          <% i += 1 %>
-                          <% if i == 7 %>
-                          </tr>
-                          <% i = 0 %>
-                        <% end %>
-                    <% end %>
-                </tbody>
-            </table>
-            <div class="ring-left">Na lewo</div>
-            <div class="ring-right">Na prwo</div>
+          <header>
+            <div class="day"><% t = Time.now %><%= t.day %></div>
+            <div class="month"><%= data_month(t.month) %></div>
+          </header>
+          <table class="calendar">
+            <thead>
+              <tr>
+                <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% string = tablica_miesiaca(Time.now) %>
+              <% i = 0 %>
+              <% string.each do |dzien| %>
+                <% if i == 0 %>
+                  <tr>
+                <% end %>
+                <% tab_day = dzien.split('|') %>
+                <% if tab_day[0].to_i == Time.now.day %>
+                  <td class="current-day"><%= tab_day[0] %></td>
+                <% elsif i >= 5 %>
+                  <td class="weekend-day"><%= tab_day[0] %></td>
+                <% else %>
+                  <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
+                <% end %>
+                <% i += 1 %>
+                <% if i == 7 %>
+                  </tr>
+                  <% i = 0 %>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="ring-left">Na lewo</div>
+          <div class="ring-right">Na prwo</div>
         </div> <!-- end calendar-container -->
-    </div>
-    <div class="col-xs-6 col-md-3">
-      <% tab_month = tablica_miesiaca(Time.now.months_ago(1)) %>
-      <% tab_month.shift %>
-    <table class="month-side">
-      <thead  id="prev-month-side">
-        <tr><td colspan="6" id="month-name"><%= data_month(Time.now.months_ago(1).month) %><td></td></tr>
-        <tr>
-          <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
-        </tr>
-      </thead>
-      <% i = 0 %>
-      <% tab_month.each do |dzien| %>
-      <% if i == 0 %>
-        <tr>
-      <% end %>
-      <% tab_day = dzien.split('|') %>
-      <% if i >= 5 %>
-        <td class="weekend-day"><%= tab_day[0] %></td>
-      <% else %>
-        <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
-      <% end %>
-      <% i += 1 %>
-      <% if i == 7 %>
-        </tr>
-        <% i = 0 %>
-      <% end %>
-    <% end %>
-</table>
-<br/>
-<br />
-<hr />
-<br />
-<br />
-<% tab_month = (tablica_miesiaca(Time.now.months_since(1))) %>
-<% tab_month.shift %>
-<table class="month-side">
-    <thead  id="next-month-side">
-      <tr><td colspan="6" id="month-name"><%= data_month(Time.now.months_since(1).month) %><td></td></tr>
-      <tr>
-        <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
-      </tr>
-    </thead>
-    <% i = 0 %>
-    <% tab_month.each do |dzien| %>
-      <% if i == 0 %>
-        <tr>
-      <% end %>
-      <% tab_day = dzien.split('|') %>
-      <% if i >= 5 %>
-        <td class="weekend-day"><%= tab_day[0] %></td>
-      <% else %>
-        <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
-      <% end %>
-      <% i += 1 %>
-      <% if i == 7 %>
-        </tr>
-        <% i = 0 %>
-      <% end %>
-    <% end %>
-</table>
+      </div><!-- koniec srodkowej czesci ciala strony. -->
+      
+      <div class="col-xs-6 col-md-3">
+       <!-- drugi miesiac -->
+       
+             <div class="panel panel-primary"><!-- kalendarz pierwszy -->
+        <% tab_month = tablica_miesiaca(Time.now.months_ago(1)) %>
+        <% tab_month.shift %>
+        <div class="panel-heading"><%= data_month(Time.now.months_ago(1).month) %></div>
+        <div class="panel-body">
+          <table class="month-side">
+            <tr>
+              <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
+            </tr>
+            <% i = 0 %>
+        <% tab_month.each do |dzien| %>
+          <% if i == 0 %>
+            <tr>
+          <% end %>
+          <% tab_day = dzien.split('|') %>
+          <% if i >= 5 %>
+            <td class="weekend-day"><%= tab_day[0] %></td>
+          <% else %>
+            <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
+          <% end %>
+          <% i += 1 %>
+          <% if i == 7 %>
+            </tr>
+            <% i = 0 %>
+          <% end %>
+        <% end %>
+      </table><!-- Koniec tablicy dla kalendarza drugiego -->
+        </div>
+      </div>
+
+      
+      <div class="panel panel-success"><!-- kalendarz drugi -->
+        <% tab_month = (tablica_miesiaca(Time.now.months_since(1))) %>
+        <% tab_month.shift %>
+        <div class="panel-heading"><%= data_month(Time.now.months_since(1).month) %></div>
+        <div class="panel-body">
+          <table class="month-side">
+            <tr>
+              <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
+            </tr>
+            <% i = 0 %>
+        <% tab_month.each do |dzien| %>
+          <% if i == 0 %>
+            <tr>
+          <% end %>
+          <% tab_day = dzien.split('|') %>
+          <% if i >= 5 %>
+            <td class="weekend-day"><%= tab_day[0] %></td>
+          <% else %>
+            <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
+          <% end %>
+          <% i += 1 %>
+          <% if i == 7 %>
+            </tr>
+            <% i = 0 %>
+          <% end %>
+        <% end %>
+      </table><!-- Koniec tablicy dla kalendarza drugiego -->
+        </div>
+      </div>
+      
+     <div class="panel panel-info">
+       <div class="panel-heading">Ilość godzin:</div> 
+      <div class="panel-body">
+        ilość godzin: 0<br/>
+        w tym nocnych: 0
+      </div>
     </div>
 </div>
 

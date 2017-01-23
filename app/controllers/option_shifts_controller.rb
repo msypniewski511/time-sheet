@@ -75,6 +75,6 @@ class OptionShiftsController < ApplicationController
     
     def set_opcje
       @opcje = ([["black", "#000000",], ["red", "#FF0000"], ["purple", "#800080"], ["fuchsia", "#FF00FF"], ["green", "#008000"], ["lime", "#00FF00"], ["olive", "#808000"], 
-    ["yellow", "#FFFF00"], ["navy", "#000080"], ["blue", "#0000FF"], ["teal", "#008080"], ["aqua", "#00FFFF"]])
+    ["yellow", "#FFFF00"], ["navy", "#000080"], ["blue", "#0000FF"], ["teal", "#008080"], ["aqua", "#00FFFF"], ["silver", "#C0C0C0"]])
     end
 end
